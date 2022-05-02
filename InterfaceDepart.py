@@ -20,12 +20,14 @@ pygame.mixer.music.load("Shreksophone.mp3")
 pygame.mixer.music.play()
 
 #Ajout des effets sonnors
-son = pygame.mixer.Sound("son.wav")
+#son = pygame.mixer.Sound("son.wav")
 #Boucle infini pour laisser la fenetre ouverte
 
 continuer = 1
 while continuer:
+
 	pygame.mixer.music.queue("Shreksophone.mp3")
 	for event in pygame.event.get():
 		if event.type == QUIT:
 			continuer = 0
+
