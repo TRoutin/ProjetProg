@@ -53,27 +53,27 @@ while continuer:
 		if event.type == QUIT:
 			continuer = 0
 		if event.type == pygame.MOUSEBUTTONDOWN: #si un clique sur le bouton quitter
-			if width/2 <= mouse[0] <= width/2 +140 and height/2 <= mouse[1] <= height/2+40:
+			if width/2-70 <= mouse[0] <= width/2+70 and height/1.1 <= mouse[1] <= height/1.1+40:
 				continuer = 0
 		if event.type == pygame.MOUSEBUTTONDOWN: #si un clique sur le bouton play
-			if width/2 <= mouse[0] <= width/2 +140 and height/2.4 <= mouse[1] <= height/2.4+40:
+			if width/2-70 <= mouse[0] <= width/2+70 and height/2.4 <= mouse[1] <= height/2.4+40:
 				continuer = 0
 
 	mouse = pygame.mouse.get_pos() #obtenir la position du curseur
 
 #couleur du bouton plus clair quand la souris passe dessus (quit)
-	if width/2 <= mouse[0] <= width/2+140 and height/2 <= mouse[1] <= height/2+40:
-		pygame.draw.rect(fenetre,color_light,[width/2,height/2,140,40])
+	if width/2-70 <= mouse[0] <= width/2+70 and height/1.1 <= mouse[1] <= height/1.1+40:
+		pygame.draw.rect(fenetre,color_light,[width/2-70,height/1.1,140,40])
 #sinon plus sombre
 	else:
-		pygame.draw.rect(fenetre,color_dark,[width/2,height/2,140,40])
-	fenetre.blit(textquit , (width/2+50,height/2))
+		pygame.draw.rect(fenetre,color_dark,[width/2-70,height/1.1,140,40])
+	fenetre.blit(textquit , (width/2-30,height/1.1+7))
 #idem pour Play
-	if width/2 <= mouse[0] <= width/2+140 and height/2.4 <= mouse[1] <= height/2.4+40:
-		pygame.draw.rect(fenetre,color_light,[width/2,height/2.4,140,40])
+	if width/2-70 <= mouse[0] <= width/2+70 and height/2.4 <= mouse[1] <= height/2.4+40:
+		pygame.draw.rect(fenetre,color_light,[width/2-70,height/2.4,140,40])
 
 	else:
-		pygame.draw.rect(fenetre,color_dark,[width/2,height/2.4,140,40])
-	fenetre.blit(textplay , (width/2+50,height/2.4))
+		pygame.draw.rect(fenetre,color_dark,[width/2-70,height/2.4,140,40])
+	fenetre.blit(textplay , (width/2-30,height/2.4+7))
 
 	pygame.display.update()
