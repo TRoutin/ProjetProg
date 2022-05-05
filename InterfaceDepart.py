@@ -37,7 +37,7 @@ height = fenetre.get_height()
 
 smallfont = pygame.font.SysFont('Corbel',35)
 
-text = smallfont.render('QUIT' , True , color)
+textquit = smallfont.render('QUIT' , True , color)
 
 
 
@@ -52,7 +52,8 @@ while continuer:
 			continuer = 0
 		if event.type == pygame.MOUSEBUTTONDOWN:
 			if width/2 <= mouse[0] <= width/2 +140 and height/2 <= mouse[1] <= height/2+40:
-				pygame.quit()
+				continuer = 0
+
 
 	mouse = pygame.mouse.get_pos()
 
@@ -61,7 +62,6 @@ while continuer:
 
 	else:
 		pygame.draw.rect(fenetre,color_dark,[width/2,height/2,140,40])
-	fenetre.blit(text , (width/2+50,height/2))
+	fenetre.blit(textquit , (width/2+50,height/2))
 
 	pygame.display.update()
-
