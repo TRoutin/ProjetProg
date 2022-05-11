@@ -3,7 +3,10 @@ import pygame
 import sys
 from pygame.locals import *
 
-def InterfaceDepart() :
+
+
+
+def GameTab() :
 	#Initialisation de Pygame
 	pygame.init()
 
@@ -13,7 +16,7 @@ def InterfaceDepart() :
 	#Ajout d'un fond
 	fond = pygame.image.load("TEST.jpg").convert()
 	fenetre.blit(fond, (0,0))
-	pygame.display.set_caption('Pregame')
+	pygame.display.set_caption('GameTab')
 
 	#refresh de le fenetre
 	pygame.display.flip()
@@ -40,7 +43,6 @@ def InterfaceDepart() :
 	smallfont = pygame.font.SysFont('Corbel',35)
 
 	textquit = smallfont.render('QUIT' , True , color)
-	textplay = smallfont.render('PLAY' , True , color)
 
 
 
@@ -56,9 +58,7 @@ def InterfaceDepart() :
 			if event.type == pygame.MOUSEBUTTONDOWN: #si un clique sur le bouton quitter
 				if width/2-70 <= mouse[0] <= width/2+70 and height/1.1 <= mouse[1] <= height/1.1+40:
 					continuer = 0
-			if event.type == pygame.MOUSEBUTTONDOWN: #si un clique sur le bouton play
-				if width/2-70 <= mouse[0] <= width/2+70 and height/2.4 <= mouse[1] <= height/2.4+40:
-					continuer = 0
+
 
 		mouse = pygame.mouse.get_pos() #obtenir la position du curseur
 
@@ -69,13 +69,6 @@ def InterfaceDepart() :
 		else:
 			pygame.draw.rect(fenetre,color_dark,[width/2-70,height/1.1,140,40])
 		fenetre.blit(textquit , (width/2-30,height/1.1+7))
-	#idem pour Play
-		if width/2-70 <= mouse[0] <= width/2+70 and height/2.4 <= mouse[1] <= height/2.4+40:
-			pygame.draw.rect(fenetre,color_light,[width/2-70,height/2.4,140,40])
 
-		else:
-			pygame.draw.rect(fenetre,color_dark,[width/2-70,height/2.4,140,40])
-		fenetre.blit(textplay , (width/2-30,height/2.4+7))
 
 		pygame.display.update()
-
