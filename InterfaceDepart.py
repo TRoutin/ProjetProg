@@ -57,7 +57,7 @@ def InterfaceDepart() :
 				if width/2-70 <= mouse[0] <= width/2+70 and height/1.1 <= mouse[1] <= height/1.1+40:
 					continuer = 0
 					return 0
-			if event.type == pygame.MOUSEBUTTONDOWN: #si un clique sur le bouton play
+				#si un clique sur le bouton play
 				if width/2-70 <= mouse[0] <= width/2+70 and height/2.4 <= mouse[1] <= height/2.4+40:
 					continuer = 0
 					return 1
