@@ -4,8 +4,9 @@ from pygame.locals import *
 
 from InterfaceDepart import InterfaceDepart
 
-InterfaceDepart()
+Value = InterfaceDepart()
 
-from GameTab import GameTab
 
-GameTab()
+if Value == 1 :
+    from GameTab import GameTab
+    GameTab()
