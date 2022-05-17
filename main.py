@@ -57,7 +57,4 @@ if Value == 1:
             x, y = cursor_tile_pos()
             board[y][x], board[y][x + 1] = board[y][x + 1], board[y][x]
 
-
-
-
     pgzrun.go()
