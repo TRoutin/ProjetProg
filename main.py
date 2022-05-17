@@ -25,19 +25,18 @@ if Value == 1:
     cursor = Actor("selected", topleft=(0, 0))
 
 
-
-
-
     board = []
     for row in range(TILESHEIGHT):
         tiles = [random.randint(1, 8) for x in range(TILESWIDTH)]
         board.append(tiles)
 
     def draw():
+        screen.clear()
         for y in range(TILESHEIGHT):
             for x in range(TILESWIDTH):
                 tile = board[y][x]
-                screen.blit(str(tile), (x * 40, y * 40))
+                if tile:
+                    screen.blit(str(tile), (x * 40, y * 40))
         cursor.draw()
 
     def cursor_tile_pos():
@@ -54,7 +53,32 @@ if Value == 1:
         if key == keys.DOWN and y < TILESHEIGHT - 1:
             cursor.y += 40
         if key == keys.SPACE:
-            x, y = cursor_tile_pos()
             board[y][x], board[y][x + 1] = board[y][x + 1], board[y][x]
+            check_matches()
+
+    def check_matches():
+        for y in range(TILESHEIGHT):
+            for x in range(TILESWIDTH-1):
+                if board[y][x] == board[y][x+1]:
+                    board[y][x] = None
+                    board[y][x+1] = None
+
+    def every_second():
+        check_matches()
+        check_gaps()
+
+    clock.schedule_interval(every_second, 1.0)
+
+    def check_gaps():
+        for y in range(TILESHEIGHT-1,-1,-1):
+            for x in range(TILESWIDTH):
+                if board[y][x] is None:
+                    drop_tiles(x,y)
+
+    def drop_tiles(x,y):
+        for row in range (y,0,-1):
+            board[row][x] = board[row-1][x]
+        board[0][x] = None
+
 
     pgzrun.go()
