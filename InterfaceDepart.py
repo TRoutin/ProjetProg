@@ -12,7 +12,7 @@ def InterfaceDepart():
     screen = pygame.display.set_mode((400, 560))
 
     # Ajout d'un fond
-    background = pygame.image.load("TEST.png").convert()
+    background = pygame.image.load("Fond.png").convert()
     sound = pygame.image.load('sound.png').convert_alpha()
     screen.blit(background, (0, 0))
     screen.blit(sound, (250, 10))
