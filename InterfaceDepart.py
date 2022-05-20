@@ -1,109 +1,103 @@
-#Importation des bibliotheques
+# Importation des bibliotheques
 import pygame
 import sys
 from pygame.locals import *
 
-def InterfaceDepart() :
-	#Initialisation de Pygame
-	pygame.init()
 
-	#Creation de la fenetre
-	screen = pygame.display.set_mode((400, 560))
+def InterfaceDepart():
+    # Initialisation de Pygame
+    pygame.init()
 
-	#Ajout d'un fond
-	background = pygame.image.load("TEST.jpg").convert()
-	sound = pygame.image.load('sound.png').convert_alpha()
-	screen.blit(background, (0,0))
-	screen.blit(sound, (250,10))
-	pygame.display.set_caption('Pregame')
+    # Creation de la fenetre
+    screen = pygame.display.set_mode((400, 560))
 
-	#refresh de le fenetre
-	pygame.display.flip()
+    # Ajout d'un fond
+    background = pygame.image.load("TEST.jpg").convert()
+    sound = pygame.image.load('sound.png').convert_alpha()
+    screen.blit(background, (0, 0))
+    screen.blit(sound, (250, 10))
+    pygame.display.set_caption('Pregame')
 
-	#ajout de la musique
-	pygame.mixer.music.load("Shreksophone.mp3")
-	pygame.mixer.music.play()
+    # refresh de le fenetre
+    pygame.display.flip()
 
-	#Ajout des effets sonnors
-	#son = pygame.mixer.Sound("son.wav")
+    # ajout de la musique
+    pygame.mixer.music.load("Shreksophone.mp3")
+    pygame.mixer.music.play()
 
-	#ajout de parametre pour un bouton
+    # Ajout des effets sonnors
+    # son = pygame.mixer.Sound("son.wav")
 
-	color = (255,255,255)
+    # ajout de parametre pour un bouton
 
-	color_light = (170,170,170)
+    color = (255, 255, 255)
 
-	color_dark = (100,100,100)
+    color_light = (170, 170, 170)
 
-	width = screen.get_width()
+    color_dark = (100, 100, 100)
 
-	height = screen.get_height()
+    width = screen.get_width()
 
-	smallfont = pygame.font.SysFont('Corbel',35)
+    height = screen.get_height()
 
-	textquit = smallfont.render('QUIT' , True , color)
-	textplay = smallfont.render('PLAY' , True , color)
-	textOFF = smallfont.render('Off' , True , color)
-	textON = smallfont.render('On' , True , color)
+    smallfont = pygame.font.SysFont('Corbel', 35)
 
+    textquit = smallfont.render('QUIT', True, color)
+    textplay = smallfont.render('PLAY', True, color)
+    textOFF = smallfont.render('Off', True, color)
+    textON = smallfont.render('On', True, color)
 
+    # Boucle infini pour laisser la fenetre ouverte
 
+    continuer = 1
+    while continuer:
 
-	#Boucle infini pour laisser la fenetre ouverte
+        pygame.mixer.music.queue("Shreksophone.mp3")
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                continuer = 0
+            if event.type == pygame.MOUSEBUTTONDOWN:  # si un clique sur le bouton quitter
+                if width / 2 - 70 <= mouse[0] <= width / 2 + 70 and height / 1.1 <= mouse[1] <= height / 1.1 + 40:
+                    continuer = 0
+                    return 0
+                # si un clique sur le bouton play
+                if width / 2 - 70 <= mouse[0] <= width / 2 + 70 and height / 2.4 <= mouse[1] <= height / 2.4 + 40:
+                    continuer = 0
+                    return 1
+                if 350 <= mouse[0] <= 390 and 10 <= mouse[1] <= 50:
+                    pygame.mixer.music.pause()
+                if 300 <= mouse[0] <= 340 and 10 <= mouse[1] <= 50:
+                    pygame.mixer.music.unpause()
 
-	continuer = 1
-	while continuer:
+        mouse = pygame.mouse.get_pos()  # obtenir la position du curseur
 
-		pygame.mixer.music.queue("Shreksophone.mp3")
-		for event in pygame.event.get():
-			if event.type == QUIT:
-				continuer = 0
-			if event.type == pygame.MOUSEBUTTONDOWN: #si un clique sur le bouton quitter
-				if width/2-70 <= mouse[0] <= width/2+70 and height/1.1 <= mouse[1] <= height/1.1+40:
-					continuer = 0
-					return 0
-				#si un clique sur le bouton play
-				if width/2-70 <= mouse[0] <= width/2+70 and height/2.4 <= mouse[1] <= height/2.4+40:
-					continuer = 0
-					return 1
-				if 350 <= mouse[0] <= 390 and 10 <= mouse[1] <= 50:
-					pygame.mixer.music.pause()
-				if 300 <= mouse[0] <= 340 and 10 <= mouse[1] <= 50:
-					pygame.mixer.music.unpause()
+        # couleur du bouton plus clair quand la souris passe dessus (quit)
+        if width / 2 - 70 <= mouse[0] <= width / 2 + 70 and height / 1.1 <= mouse[1] <= height / 1.1 + 40:
+            pygame.draw.rect(screen, color_light, [width / 2 - 70, height / 1.1, 140, 40])
+        # sinon plus sombre
+        else:
+            pygame.draw.rect(screen, color_dark, [width / 2 - 70, height / 1.1, 140, 40])
+        screen.blit(textquit, (width / 2 - 30, height / 1.1 + 7))
+        # idem pour Play
+        if width / 2 - 70 <= mouse[0] <= width / 2 + 70 and height / 2.4 <= mouse[1] <= height / 2.4 + 40:
+            pygame.draw.rect(screen, color_light, [width / 2 - 70, height / 2.4, 140, 40])
 
-		mouse = pygame.mouse.get_pos() #obtenir la position du curseur
+        else:
+            pygame.draw.rect(screen, color_dark, [width / 2 - 70, height / 2.4, 140, 40])
+        screen.blit(textplay, (width / 2 - 30, height / 2.4 + 7))
 
-	#couleur du bouton plus clair quand la souris passe dessus (quit)
-		if width/2-70 <= mouse[0] <= width/2+70 and height/1.1 <= mouse[1] <= height/1.1+40:
-			pygame.draw.rect(screen,color_light,[width/2-70,height/1.1,140,40])
-	#sinon plus sombre
-		else:
-			pygame.draw.rect(screen,color_dark,[width/2-70,height/1.1,140,40])
-		screen.blit(textquit , (width/2-30,height/1.1+7))
-	#idem pour Play
-		if width/2-70 <= mouse[0] <= width/2+70 and height/2.4 <= mouse[1] <= height/2.4+40:
-			pygame.draw.rect(screen,color_light,[width/2-70,height/2.4,140,40])
+        if 350 <= mouse[0] <= 390 and 10 <= mouse[1] <= 50:
+            pygame.draw.rect(screen, color_light, [350, 10, 40, 40])
 
-		else:
-			pygame.draw.rect(screen,color_dark,[width/2-70,height/2.4,140,40])
-		screen.blit(textplay , (width/2-30,height/2.4+7))
+        else:
+            pygame.draw.rect(screen, color_dark, [350, 10, 40, 40])
+        screen.blit(textOFF, (352, 10 + 7))
 
+        if 300 <= mouse[0] <= 340 and 10 <= mouse[1] <= 50:
+            pygame.draw.rect(screen, color_light, [300, 10, 40, 40])
 
+        else:
+            pygame.draw.rect(screen, color_dark, [300, 10, 40, 40])
+        screen.blit(textON, (302, 10 + 7))
 
-		if 350 <= mouse[0] <= 390 and 10 <= mouse[1] <= 50:
-			pygame.draw.rect(screen,color_light,[350,10,40,40])
-
-		else:
-			pygame.draw.rect(screen,color_dark,[350,10,40,40])
-		screen.blit(textOFF , (352,10+7))
-
-		if 300 <= mouse[0] <= 340 and 10 <= mouse[1] <= 50:
-			pygame.draw.rect(screen,color_light,[300,10,40,40])
-
-		else:
-			pygame.draw.rect(screen,color_dark,[300,10,40,40])
-		screen.blit(textON , (302,10+7))
-
-		pygame.display.update()
-
-
+        pygame.display.update()
