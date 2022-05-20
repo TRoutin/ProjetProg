@@ -64,11 +64,20 @@ if Value == 1:
 
     #vérifie la correspondance entres les différentes cases
     def check_matches():
-        for y in range(TILESHEIGHT):
-            for x in range(TILESWIDTH-1):
-                if board[y][x] == board[y][x+1]:
+        for y in range(TILESHEIGHT-2):
+            for x in range(TILESWIDTH-2):
+                if board[y][x] == board[y][x+1] == board[y][x+2]:
                     board[y][x] = None
                     board[y][x+1] = None
+                    board[y][x+2] = None
+
+
+                elif board[y][x] == board[y+1][x] == board[y+2][x]:
+                    board[y][x] = None
+                    board[y+1][x] = None
+                    board[y+2][x] = None
+
+
 
     #On défini la notion du temps et de compteur chaque seconde
     def every_second():
