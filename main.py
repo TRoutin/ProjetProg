@@ -32,7 +32,7 @@ if Value == 1:
         tiles = [random.randint(1, 8) for x in range(TILESWIDTH)]
         board.append(tiles)
 
-
+    #fonction Draw
     def draw():
         screen.clear()
         for y in range(TILESHEIGHT):
