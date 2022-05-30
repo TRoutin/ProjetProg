@@ -32,9 +32,9 @@ def InterfaceDepart():
 
     color = (255, 255, 255)
 
-    color_light = (170, 170, 170)
+    color_light = (127,0,255)
 
-    color_dark = (100, 100, 100)
+    color_dark = (100,6,214)
 
     width = screen.get_width()
 

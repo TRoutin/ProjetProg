@@ -64,14 +64,16 @@ if Value == 1:
 
 
     #vérifie la correspondance entres les différentes cases
-    def check_matchesH():
+    def check_matchesH():#horizontaelment
         for y in range(TILESHEIGHT):
             for x in range(TILESWIDTH-2):
                 if board[y][x] == board[y][x+1] == board[y][x+2]:
                     board[y][x] = None
                     board[y][x+1] = None
                     board[y][x+2] = None
-    def check_matchesV():
+
+
+    def check_matchesV():#Verticalement
         for y in range(TILESHEIGHT-2):
             for x in range(TILESWIDTH):
                 if board[y][x] == board[y+1][x] == board[y+2][x]:
@@ -81,11 +83,15 @@ if Value == 1:
 
 
 
+
+
     #On défini la notion du temps et de compteur chaque seconde
     def every_second():
         check_matchesV()
         check_matchesH()
         check_gaps()
+        add_new_tiles()
+
 
     clock.schedule_interval(every_second, 1.0)
 
@@ -97,11 +103,20 @@ if Value == 1:
                 if board[y][x] is None:
                     drop_tiles(x,y)
 
+
     #Fonction pour faire tomber les cases selon les trous
     def drop_tiles(x,y):
         for row in range (y,0,-1):
             board[row][x] = board[row-1][x]
         board[0][x] = None
+
+    #Génération des Nouveaux Blocs
+    New_Tile_Prob = 0.03 # 3% de Chance qu'un nouveau blocs s'ajoute
+
+    def add_new_tiles() : #ajout de nouveaux bloc
+        for x in range(TILESWIDTH) :
+            if board[0][x] is None and random.random() < New_Tile_Prob :
+                board[0][x] = random.randint(1,8)
 
 
     pgzrun.go()
