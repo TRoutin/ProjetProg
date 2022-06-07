@@ -9,6 +9,7 @@ import random
 import pgzrun
 
 from InterfaceDepart import InterfaceDepart
+from InterfceFin import InterfaceFin
 
 Value = InterfaceDepart()
 # initialisation du score
@@ -100,7 +101,7 @@ if Value == 1 and score < 50:
 
     def check_end():
         if score > 50:
-            InterfaceDepart()
+            InterfaceFin()
 
 
 
