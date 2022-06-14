@@ -94,7 +94,7 @@ if Value == 1 :
         add_new_tiles()
 
     def check_end():
-        if score >= 900 :
+        if score >= 50 :
             InterfaceFin()
 
 

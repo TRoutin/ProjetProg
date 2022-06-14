@@ -18,7 +18,7 @@ def InterfaceFin():
     screen = pygame.display.set_mode((400, 560))
 
     # Ajout d'un fond
-    background = pygame.image.load("Fond.png").convert()
+    background = pygame.image.load("Fond2.png").convert()
     screen.blit(background, (0, 0))
     pygame.display.set_caption('Endgame')
 
