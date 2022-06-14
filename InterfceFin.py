@@ -5,6 +5,12 @@ from pygame.locals import *
 
 
 def InterfaceFin():
+    '''
+    fonction qui définit l'interface de fin
+    se lance juste a la fin du jeu une fois sortie de la boucle du main
+    unique bouton pour quitter a la fin du jeu
+    :return:
+    '''
     # Initialisation de Pygame
     pygame.init()
 

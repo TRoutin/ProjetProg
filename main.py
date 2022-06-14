@@ -1,10 +1,4 @@
-import random
 from pgzero.actor import Actor
-from pgzero.screen import Screen
-from enum import EnumMeta
-import pygame
-import sys
-from pygame.locals import *
 import random
 import pgzrun
 
@@ -15,7 +9,7 @@ Value = InterfaceDepart()
 # initialisation du score
 score = 0
 
-if Value == 1 and score < 50:
+if Value == 1 :
 
     # Paramètres et taille de la fenêtre
     TILESWIDTH = 10

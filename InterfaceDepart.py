@@ -5,6 +5,13 @@ from pygame.locals import *
 
 
 def InterfaceDepart():
+    '''
+    fonction qui définit l'interface de départ
+    La valeur du return indique au main quel bouton de l'interface a été cliqué
+    0 Pour quitter
+    1 Pour le bonton Play
+    :return:
+    '''
     # Initialisation de Pygame
     pygame.init()
 
@@ -24,9 +31,6 @@ def InterfaceDepart():
     # ajout de la musique
     pygame.mixer.music.load("Shreksophone.mp3")
     pygame.mixer.music.play()
-
-    # Ajout des effets sonnors
-    # son = pygame.mixer.Sound("son.wav")
 
     # ajout de parametre pour un bouton
 
